@@ -316,22 +316,13 @@
 })(window.jQuery);
 
 // My Code
-// let prevScrollpos = window.pageYOffset;
-// window.onscroll = function() {
-// 	let currentScrollPos = window.pageYOffset;
-// 	if (prevScrollpos > currentScrollPos) {
-// 		document.getElementById("header-area").style.display = "block";
-// 	} else {
-// 		document.getElementById("header-area").style.display = "none"; /* Adjust based on navbar height */
-// 	}
-// 	prevScrollpos = currentScrollPos;
-// }
 
 
 let prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
 	let currentScrollPos = window.pageYOffset;
 	let navbar = document.getElementById("header-area");
+	let backToTop = document.getElementById("scrollToSection");
 	if (prevScrollpos > currentScrollPos) {
 		navbar.style.opacity = "1";
 		navbar.style.visibility = "visible";
@@ -340,4 +331,26 @@ window.onscroll = function() {
 		navbar.style.visibility = "hidden";
 	}
 	prevScrollpos = currentScrollPos;
+	if (window.scrollY > 900) {
+		backToTop.style.display = "block";
+	} else {
+		backToTop.style.display = "none";
+	}
 }
+
+// document.addEventListener("DOMContentLoaded", function() {
+//     let backToTop = document.getElementById("scrollToSection");
+
+//     window.onscroll = function() {
+//         if (window.scrollY > 900) {
+//             backToTop.style.display = "block";
+//         } else {
+//             backToTop.style.display = "none";
+//         }
+//     };
+
+// });
+
+document.getElementById("scrollToSection").addEventListener("click", function() {
+    document.getElementById("targetSection").scrollIntoView({ behavior: "smooth" });
+});
